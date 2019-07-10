@@ -11,8 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Gothic+A1:600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/reset.css">
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    
 </head>
 
 <body>
@@ -43,10 +42,12 @@
 
     <div id="selectScreen" class="container-fluid">
         <div class="row justify-content-center">
-        <div class="column-12">
-                Enemies remaining:
-            <div id="defendersLeftDiv"></div>  
-            <img class="image-fluid" src="assets/images/Order-66-logo.png">
+
+            <div class="column-12 text">
+                <div id="h2"></div>
+                    
+                <div id="defendersLeftDiv"></div>
+             
         </div>
     </div>
         <div class="row justify-content-center text" id="msg"></div>
@@ -58,18 +59,18 @@
         <br>
         <div class="row justify-content-center">
             <div class="col-5 text">
-                Lord Vader:
-                <div class="container" style=width:30%>
+                Player:
+                <div class="container" style="width: 40%">
                     <div id="vaderDiv"></div>
                     <div id="vaderHealthDiv"></div>
                 </div>
             </div>
                     <div class="col-2">
-                        <button type="button" class="btn btn-lg btn-outline-danger" id= "attackBtn">ATTACK </button>
+                        <button type="button" class="btn btn-lg btn-outline-danger" id= "attackBtn">ATTACK</button>
                         <div id="msg"></div>
                     </div>
                     <div class="col-5 text">
-                        Enemy Jedi:
+                        Enemy:
                         <div class="container">
                             <div id="enemyDiv"></div>
                             <div id="enemyHealthDiv"></div>
@@ -77,8 +78,14 @@
                     </div>
                 </div>
             </div>
+        
+        <div class="container-fluid">
+            <div id="globalMsg">
+                The galaxy is ours!
+            </div>
         </div>
-
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <script rel src="assets/javascript/game.js"></script>
 </body>
 

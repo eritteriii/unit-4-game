@@ -36,11 +36,26 @@ body {
 }
 
 .card {
-    color: #ffff82;
+    color: rgb(75, 213, 238);
     font-family: 'Gothic A1', sans-serif;
-    font-weight: 600;
-    font-size: 24px;
+    font-weight: 400;
+    font-size: 18px;
     background: none;
     text-align: center;
     padding-top: 25px;
+}
+
+.img-thumbnail {
+    background: none;
+}
+
+#globalMsg {
+    color: rgb(75, 213, 238);
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 400;
+    font-size: 100px;
+    background: none;
+    text-align: center;
+    padding-top: 200px;
+}
 }

@@ -1,5 +1,5 @@
 // Define Variables
-var baseAttackPower = "";
+var baseAttack = 0;
 var player;
 var defender;
 var characters = [];
@@ -19,7 +19,7 @@ function Char(name, hp, ap, counter, image) {
 
 // Stacking Attack Power Function
 Char.prototype.increaseAttack = function () {
-    this.attackPower += baseAttackPower
+    this.attackPower += baseAttack;
 }
 
 // Attack Function
@@ -35,21 +35,20 @@ Char.prototype.counterAttack = function (Obj) {
     Obj.hitPoints -= this.counterAttackPower
     //$('#PLACEHOLDERMESSAGEDIV').append("MESSAGE CONCATENATED TEXT")
 }
-//var vader = new Char("Darth Vader", "180", "25", "5", "")
 
 // Initialize Characters Function
 function initChar() {
-    var yoda = new Char("Grand Master Yoda", "220", "20", "40", "./assets/images/yoda.png")
-    var plo = new Char("Plo Koon", "160", "15", "10", "./assets/images/plo.png")
-    var kit = new Char("Kit Fisto", "120", "10", "15", "./assets/images/kit.png")
-    var ahsoka = new Char("Ahsoka Tano", "100", "30", "5", "./assets/images/ahsoka.png")
-    var vader = new Char("Darth Vader", "180", "25", "5", "./assets/images/vader.png")
+    var yoda = new Char("Grand Master Yoda", 220, 20, 40, "./assets/images/yoda.png")
+    var plo = new Char("Plo Koon", 160, 15, 10, "./assets/images/plo.png")
+    var kit = new Char("Kit Fisto", 120, 10, 15, "./assets/images/kit.png")
+    var ahsoka = new Char("Ahsoka Tano", 100, 30, 5, "./assets/images/ahsoka.png")
+    var vader = new Char("Darth Vader", 180, 25, 5, "./assets/images/vader.png")
     characters.push(yoda, plo, kit, ahsoka, vader);
 }
 
 
-function setBaseAttackPower(Obj) {
-    baseAttackPower = Obj.attackPower;
+function setBaseAttack(Obj) {
+    baseAttack = Obj.attackPower;
 }
 
 function isUp(Obj) {
@@ -67,7 +66,7 @@ function success() {
 
 function characterCards(divID) {
     $(divID).children().remove();
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < characters.length; i++) {
         $(divID).append("<div />");
         $(divID + " div:last-child").addClass("card");
         $(divID + " div:last-child").append("<img />");
@@ -87,9 +86,11 @@ function moveImg(fromDivID, toDivID) {
     for (var i = 0; i < characters.length; i++) {
         $(toDivID).append("<img />");
         $(toDivID + " img:last-child").attr("id", characters[i].name);
-        $(toDivID + " img:last-child").attr("src", characters[i].pic);
+        $(toDivID + " img:last-child").attr("src", characters[i].image);
         $(toDivID + " img:last-child").attr("width", 150);
         $(toDivID + " img:last-child").addClass("img-thumbnail");
+        
+        
     }
 }
 
@@ -100,7 +101,7 @@ function screenChange() {
 
 $('#execute').on("click", function () {
     screenChange();
-    $("#msg").html("Who will you hunt first?");
+    $("#msg").html("These are the droids you're looking for:");
 })
 
 $(document).on("click", "img", function () {
@@ -122,33 +123,23 @@ $(document).on("click", "img", function () {
     }
 
     if (!playerPick) {
-        //for (var i = 0; i < characters.length; i++) {
-          //  if (characters[i].name == (this).id) {
-                player = characters["vader"]; // sets current player
+        for (var i = 0; i < characters.length; i++) {
+            if (characters[i].name == (this).id) {
+                player = characters[i]; // sets current player
                 
-                setBaseAttackPower(player);
-                characters.splice("vader", 1);
+                setBaseAttack(player);
+                characters.splice(i, 1);
                 playerPick = true;
-               // $("#msg").html("Pick an enemy to fight!");
+               $("#msg").html("Pick an enemy to fight!");
+               $("#h2").html("Enemies remaining:");
             }
-        
-        
+        }
+        moveImg("#cards", "#defendersLeftDiv");
+        $("#vaderDiv").append(this);
+        $("#vaderDiv").append(player.name);
+        $("#vaderHealthDiv").append("HP: " + player.hitPoints);
+    } 
 
-
-    //$('#execute').on("click", function() {
-    //setAttack(player);
-    //screenChange();
-    
-
-
-
-
-moveImg("#cards", "#defendersLeftDiv");
-$("#vaderDiv").append(this);
-
-$("#vaderDiv").append(player.name);
-$("#vaderHealthDiv").append("HP: " + player.healthPoints);
-    
 });
 
 
@@ -166,9 +157,9 @@ $(document).on("click", "#attackBtn", function () {
                 $("#msg").html("Pick another enemy to battle...");
             }
             if (!isUp(player)) {
-                $("#vaderHealthDiv").html("YOU LOST!");
-                $("#msg").html("Try again...");
-                $("#attackBtn").html("Restart Game");
+                //$("#vaderHealthDiv").html("");
+                $("#msg").html("I find your lack of faith disturbing.");
+                $("#attackBtn").html("RESTART");
                 $(document).on("click", "#attackBtn", function () { // restarts game
                     location.reload();
                 });
@@ -181,8 +172,8 @@ $(document).on("click", "#attackBtn", function () {
             $("#enemyDiv").html("");
             $("#enemyHealthDiv").html("");
             defenderPick = false;
-            if (isWinner()) {
-                $("#secondScreen").hide();
+            if (success()) {
+                $("#selectScreen").hide();
                 $("#globalMsg").show();
             }
         }
@@ -192,7 +183,7 @@ $(document).on("click", "#attackBtn", function () {
 // EXECUTE
 $(document).ready(function () {
     $("#selectScreen").hide();
-    //$("#globalMsg").hide();
+    $("#globalMsg").hide();
     initChar();
     characterCards("#cards");
 });
