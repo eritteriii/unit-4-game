@@ -1,0 +1,46 @@
+body {
+    background-color: black;
+}
+
+.btn{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 600;
+}
+
+.text{
+    color: #ffff82;
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 600;
+    font-size: 42px;
+    text-align: center;
+}
+
+#homeScreen {
+    background-position: center;
+    background-image: url("../images/agnieszka-kowalczyk-c0VRNWVEjOA-unsplash.jpg");
+    min-height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+    #selectScreen {
+    background-position: center;
+    background-image: url("../images/vader.jpg");
+    min-height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.card-img-top {
+    background: none;
+    
+}
+
+.card {
+    color: #ffff82;
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    background: none;
+    text-align: center;
+    padding-top: 25px;
+}

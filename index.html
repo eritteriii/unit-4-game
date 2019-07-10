@@ -1,20 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Star Wars RPG</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" src ="assets/css/style.css">
-    <link rel="stylesheet" src ="assets/css/reset.css">
-    <script
-    src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-    crossorigin="anonymous"></script>
+    <title>Order 66: A Star Wars Game</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Gothic+A1:600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    
-<script rel src ="assets/javascript/game.js"></script>
+    <div id="homeScreen" class="container-fluid">
+
+        <div class="row justify-content-center">
+            <div class="column">
+                <img class="image-fluid" src="assets/images/Order-66-logo.png">
+            </div>
+        </div>
+        <br>
+        <br>
+        <h1 class="text">Eliminate the Jedi, Lord Vader.</h1>
+        <br>
+        <br>
+        <br>
+        
+        <br>
+        <br>
+        <div class="row justify-content-center">
+                
+                <br>
+                <br>
+                <br>
+            <button type="button" id="execute" class="btn btn-lg btn-outline-danger">EXECUTE</button>
+        </div>
+    </div>
+
+    <div id="selectScreen" class="container-fluid">
+        <div class="row justify-content-center">
+        <div class="column-12">
+                Enemies remaining:
+            <div id="defendersLeftDiv"></div>  
+            <img class="image-fluid" src="assets/images/Order-66-logo.png">
+        </div>
+    </div>
+        <div class="row justify-content-center text" id="msg"></div>
+        <br>
+        <br>
+        <div class="row justify-content-center card-deck" id="cards"></div>
+        <br>
+        <br>
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-5 text">
+                Lord Vader:
+                <div class="container" style=width:30%>
+                    <div id="vaderDiv"></div>
+                    <div id="vaderHealthDiv"></div>
+                </div>
+            </div>
+                    <div class="col-2">
+                        <button type="button" class="btn btn-lg btn-outline-danger" id= "attackBtn">ATTACK </button>
+                        <div id="msg"></div>
+                    </div>
+                    <div class="col-5 text">
+                        Enemy Jedi:
+                        <div class="container">
+                            <div id="enemyDiv"></div>
+                            <div id="enemyHealthDiv"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script rel src="assets/javascript/game.js"></script>
 </body>
+
 </html>
